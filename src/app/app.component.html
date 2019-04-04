@@ -1,0 +1,20 @@
+<cx-storefront></cx-storefront>
+
+<ng-template cxOutletRef = "SearchBoxComponent" cxOutletPos = "after">
+hohoho
+</ng-template>
+
+<ng-template [cxOutletRef] = "samtest1.IMAGES" let-product>
+
+    <!-- {{oripic|json}} -->
+  <img *ngFor="let image of product.images.GALLERY" [src]="image.thumbnail.url"
+    (click)="detailImage = image">
+
+  <ng-container *ngIf="detailImage">
+    <link rel="import" href="https://raw-dot-custom-elements.appspot.com/ryanburns23/img-pan-zoom/v2.0.0/img-pan-zoom/img-pan-zoom.html"/>
+    <img-pan-zoom [src]="detailImage.zoom.url" 
+    style="--img-pan-zoom-spinner-color:var(--cx-g-color-primary)">
+    </img-pan-zoom>
+  </ng-container>
+
+</ng-template>
